@@ -14,10 +14,11 @@ class RxSeeEmitter extends SseEmitter { //온도 이벤트에 대한 구독자 �
     static final long SSE_SESSION_TIMEOUT = 30 * 60 * 1000L;
     private final Subscriber<Temperature> subscriber;   //구독자
 
+
     RxSeeEmitter(){
         super(SSE_SESSION_TIMEOUT);
 
-        this.subscriber = new Subscriber<Temperature>() {
+        this.subscriber = new Subscriber<Temperature>() {   //reactivestream과는 별개의 개념으로 1.3버젼에서는 onSubscribe가 없음
             @Override
             public void onCompleted() { //stream 완료
             }
